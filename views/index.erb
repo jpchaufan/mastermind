@@ -1,0 +1,56 @@
+<div class="game_area grid">
+
+	<div class="col-2-3 guesses">
+		<% game.rounds_of_guessing.each.with_index do |round, i| %>
+			<div class='guess-round-<%= "#{i}" %>'>
+				<div class="guess-slot-0">
+					<div class="marker-<%= round.guess[0].to_s %>"><%= round.guess[0].to_s[0].capitalize %></div>
+				</div>
+				<div class="guess-slot-1">
+					<div class="marker-<%= round.guess[1].to_s %>"><%= round.guess[1].to_s[0].capitalize %></div>
+				</div>
+				<div class="guess-slot-2">
+					<div class="marker-<%= round.guess[2].to_s %>"><%= round.guess[2].to_s[0].capitalize %></div>
+				</div>
+				<div class="guess-slot-3">
+					<div class="marker-<%= round.guess[3].to_s %>"><%= round.guess[3].to_s[0].capitalize %></div>
+				</div>
+			</div>
+		<% end %>		
+	</div>
+	<div class="col-1-3 reports">
+		<% game.rounds_of_guessing.each.with_index do |round, i| %>
+			<div class='report-round-<%= "#{i}" %>'>
+				<div class="report-slot-0">
+					<div class="indicate-<%= round.report[0].to_s %>"></div>
+				</div>
+				<div class="report-slot-1">
+					<div class="indicate-<%= round.report[1].to_s %>"></div>
+				</div>
+				<div class="report-slot-2">
+					<div class="indicate-<%= round.report[2].to_s %>"></div>
+				</div>
+				<div class="report-slot-3">
+					<div class="indicate-<%= round.report[3].to_s %>"></div>
+				</div>
+			</div>
+		<% end %>	
+	</div>
+
+</div>
+
+<div class="grid">
+	<form method="POST">
+		<div class="guess-input-area">
+			<% game.codelength.times do |i| %>
+				<select class="guess-input" name='<%= "guess_choice_#{i}" %>'>
+					<% Codebreaker::COLORS.each do |color| %>
+						<option class='<%= "#{color}" %>' value='<%= "#{color}" %>' <%= "selected" if selected? color, i, game %> ><%= "#{color.capitalize}" %></option>	
+					<% end %>
+				</select>
+			<% end %>
+		</div>
+		<%= "<input type='submit' value='Guess the Code!' class='submit-btn' />" if game.playing %>
+	</form>
+	<%= "<div class='msg'>#{@msg}</div>" if !@msg.nil? and @msg != '' %>
+</div>

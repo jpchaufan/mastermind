@@ -1,0 +1,3 @@
+function help(){
+	$('.help').slideToggle();	
+}

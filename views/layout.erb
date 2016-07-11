@@ -1,0 +1,58 @@
+
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <title>Codebreaker</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Play codebreaker! Crack the secret color-code using your masterful mind-powers in this exciting game!">
+        <meta name="author" content="JP Chaufan Field">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="/css/grid.css">      
+        <link rel="stylesheet" type="text/css" href="/css/main.css">      
+    </head>
+    <body>
+    	<header>
+            <button class="help-btn" onclick="help()">Help!</button>
+            <div class="help">
+                <p>
+                    Guess the color code to win the game.
+                </p>
+                <p>
+                    On the left side are your previous guesses, and on the right side is your accuracy.
+                </p>
+                <p>
+                    Accuracy Indicator:<br/>
+                    <ul>
+                        <li>An empty circle means that the color does not appear in the code.</li>
+                        <li>A black circle means that the color appears in the code, but in a different spot.</li>
+                        <li>A white circle means correct color and location.</li>
+                    </ul>
+                </p>
+            </div>
+            <form method="POST">
+
+                <input type="hidden" name="_method" value="PUT" />
+                <input type="submit" value="New Game" class="new-game-btn" />
+            </form>
+    		<h1>Codebreaker</h1>
+    	</header>
+
+    	<main>
+
+    		<%= yield %>
+
+    	</main>
+        
+
+
+
+       <script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+       <script type="text/javascript" src="/js/main.js"></script>
+    </body>
+</html>
+
+
+
+		
